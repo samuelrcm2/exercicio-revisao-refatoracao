@@ -4,25 +4,24 @@
 #include <iostream>
 #include <string>
 
-class Empregado {
-	
-  public:
-    double salarioHora;  
-    double quotaMensalVendas;  
+class Empregado
+{
+public:
+  double salarioHora;
+  double horasTrabalhadas;
+  std::string nome;
 
+  Empregado(double SalarioHora,
+            double HorasTrabalhadas,
+            std::string Nome) : salarioHora(SalarioHora),
+                                horasTrabalhadas(HorasTrabalhadas),
+                                nome(Nome) {}
 
-    double pagamentoMes(double horasTrabalhadas) {
- 
-      double t = horasTrabalhadas;
-	  
-	  //Cálculo de hora extra (+50% se horasTrabalhadas > 8)
-      if (horasTrabalhadas > 8) {
-        double x = horasTrabalhadas - 8;
-        t += x / 2;
-      }
-	  return t * salarioHora;
-    }
-	
+  double pagamentoMes(double horasTrabalhadas);
+
+  bool temHorasExtras(double horasTrabalhadas);
+
+  virtual void print() = 0;
 };
 
 #endif
